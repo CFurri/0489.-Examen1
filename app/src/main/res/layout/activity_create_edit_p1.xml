@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".CreateEditP1Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Part 1: Dades Principals"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Nom de la recepta"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editTextPreu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Preu"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Mida:"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupMida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioMidaPetita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Petita" />
+            <RadioButton
+                android:id="@+id/radioMidaMitjana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mitjana" />
+            <RadioButton
+                android:id="@+id/radioMidaFamiliar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Familiar" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tipus de massa:"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerMassa"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
+
+            <Button
+                android:id="@+id/buttonEliminarP1"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ELIMINAR"
+                android:textColor="@android:color/holo_red_dark" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/buttonSeguent"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEGÜENT" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
