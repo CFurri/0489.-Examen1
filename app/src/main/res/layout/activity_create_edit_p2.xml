@@ -7,4 +7,48 @@
     android:layout_height="match_parent"
     tools:context=".CreateEditP2Activity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Part 2: Detalls Finals"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Picant:"
+            android:textSize="18sp" />
+
+        <RadioGroup ... >
+    </RadioGroup>
+
+    <Spinner ... />
+
+    <EditText ... />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Puntuació (1-5):"
+        android:textSize="18sp" />
+
+    <Spinner ... />
+
+    <EditText ... />
+
+    <EditText ... />
+
+    <CheckBox ... />
+
+</LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
