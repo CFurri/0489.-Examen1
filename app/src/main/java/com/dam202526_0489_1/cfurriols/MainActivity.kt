@@ -27,10 +27,12 @@ class MainActivity : AppCompatActivity() {
         }
         Log.i("examen1", "MainActivity")
 
-        plantillaPizza = createPlantillaPiza()
+
 
         //Inicialitzant Views...
         var btnLlegir = findViewById<Button>(R.id.buttonLlegir)
+
+
     }
 
     fun goToRead(btnLlegir : View) {

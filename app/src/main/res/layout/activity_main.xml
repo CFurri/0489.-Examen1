@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="goToRead"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_marginStart="172dp"
         android:layout_marginTop="121dp"
         android:layout_marginEnd="172dp"
-        android:text="EXÀMEN 1"
+        android:text="EXAMEN 1"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
