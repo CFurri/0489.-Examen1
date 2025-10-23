@@ -86,18 +86,23 @@ class CreateEditP1Activity : AppCompatActivity() {
             saveDataToObject()
 
             // 2. Navegar a la pantalla 2, passant l'objecte 'pizza' actualitzat
-            val intent = Intent(this, CreateEditP2Activity::class.java)
-            intent.putExtra(MainActivity.PIZZA_KEY, pizza)
-            startActivity(intent)
+            val i = Intent(CreateEditP1Activity@this, CreateEditP2Activity::class.java)
+            i.putExtra(MainActivity.PIZZA_KEY, pizza)
+            startActivity(i)
         }
 
         buttonEliminarP1.setOnClickListener {
             launchDeleteConfirm()
         }
-
-
-
     }
+
+    private fun launchDeleteConfirm() {
+        Log.i("examen1", "Demanant confirmació per eliminar...")
+        val intent = Intent(this, DeleteConfirmActivity::class.java)
+        // Llancem l'intent esperant un resultat
+        deleteConfirmLauncher.launch(intent)
+    }
+
     private fun initViews() {
         editTextNom = findViewById(R.id.editTextNom)
         editTextPreu = findViewById(R.id.editTextPreu)
@@ -163,12 +168,5 @@ class CreateEditP1Activity : AppCompatActivity() {
         pizza.isTePernil = checkPernil.isChecked
         pizza.isTeXampinyons = checkXampinyons.isChecked
         pizza.isTePinya = togglePinya.isChecked
-    }
-
-    private fun launchDeleteConfirm() {
-        Log.i("examen1", "Demanant confirmació per eliminar...")
-        val intent = Intent(this, DeleteConfirmActivity::class.java)
-        // Llancem l'intent esperant un resultat [cite: 1482]
-        deleteConfirmLauncher.launch(intent)
     }
 }

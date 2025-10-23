@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
         Log.i("examen1", "MainActivity")
 
-
+        plantillaPizza = createPlantillaPizza()
 
         //Inicialitzant Views...
         var btnLlegir = findViewById<Button>(R.id.buttonLlegir)
