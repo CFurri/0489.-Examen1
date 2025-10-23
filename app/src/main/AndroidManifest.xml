@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Examen1">
         <activity
+            android:name=".DeleteConfirmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateEditP2Activity"
+            android:exported="false" />
+        <activity
             android:name=".CreateEditP1Activity"
             android:exported="false" />
         <activity

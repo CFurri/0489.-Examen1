@@ -33,27 +33,133 @@
                 android:id="@+id/textViewPreu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:layout_marginTop="8dp"
+                android:textSize="18sp"
                 tools:text="Preu: 14.5 €" />
+
+            <TextView
+                android:id="@+id/textViewUnitats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Unitats: 1" />
 
             <TextView
                 android:id="@+id/textViewMida"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:layout_marginTop="8dp"
+                android:textSize="18sp"
                 tools:text="Mida: Mitjana" />
+
+            <TextView
+                android:id="@+id/textViewMassa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Massa: Clàssica" />
+
+            <TextView
+                android:id="@+id/textViewTomaquet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Tomàquet: Sí" />
+
+            <TextView
+                android:id="@+id/textViewMozzarella"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Mozzarella: Sí" />
+
+            <TextView
+                android:id="@+id/textViewPernil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Pernil: No" />
+
+            <TextView
+                android:id="@+id/textViewXampinyons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Xampinyons: No" />
+
+            <TextView
+                android:id="@+id/textViewPinya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Pinya: No" />
+
+            <TextView
+                android:id="@+id/textViewPicant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Picant: No" />
+
+            <TextView
+                android:id="@+id/textViewCodi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Codi: ****" />
+
+            <TextView
+                android:id="@+id/textViewPuntuacio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Puntuació: 4" />
+
+            <TextView
+                android:id="@+id/textViewData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Data: 23/10/2025" />
+
+            <TextView
+                android:id="@+id/textViewPerEmportar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Per emportar: Sí" />
+
+            <TextView
+                android:id="@+id/textViewNivellPicant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                tools:text="Nivell Picant: Cap" />
 
             <TextView
                 android:id="@+id/textViewNotes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:layout_marginTop="8dp"
+                android:textSize="18sp"
                 tools:text="Notes: Sense ceba, si us plau." />
 
         </LinearLayout>
+
+
     </ScrollView>
 
     <Button

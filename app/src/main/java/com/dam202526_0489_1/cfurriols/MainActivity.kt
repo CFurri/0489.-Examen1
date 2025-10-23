@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         }
         Log.i("examen1", "MainActivity")
 
+        plantillaPizza = createPlantillaPiza()
+
         //Inicialitzant Views...
         var btnLlegir = findViewById<Button>(R.id.buttonLlegir)
     }
@@ -34,29 +36,31 @@ class MainActivity : AppCompatActivity() {
     fun goToRead(btnLlegir : View) {
         Log.i("examen1", "MainActivity")
         val i = Intent(MainActivity@ this, LlegirActivity::class.java)
-        i.putExtra(PIZZA_KEY, Pizza)
+        i.putExtra(PIZZA_KEY, plantillaPizza)
         startActivity(i)
     }
 
-    private fun plantillaPizza(): Pizza{
-        return Pizza(
-            nomRecepta = "Barbacoa Opció B",
-            preu = 14.50,
-            unitats = 1,
-            mida = "Mitjana",
-            tipusMassa = "Clàssica",
-            teTomaquet = true,
-            teMozzarella = true,
-            tePernil = false,
-            teXampinyons = false,
-            tePinya = false,
-            picant = "No",
-            codiDescompte = "DAM2025",
-            puntuacioClient = 4,
-            notesComanda = "Sense ceba, si us plau.",
-            dataComanda = "23/10/2025",
-            perEmportar = true,
-            nivellPicant = "Cap"
-        )
+    private fun createPlantillaPizza(): Pizza {
+        // Creem la instància de la classe Java
+        val pizza = Pizza()
+        // Establim els valors utilitzant els setters
+        pizza.nomRecepta = "Barbacoa Opció B"
+        pizza.preu = 14.50
+        pizza.unitats = 1
+        pizza.mida = "Mitjana"
+        pizza.tipusMassa = "Clàssica"
+        pizza.isTeTomaquet = true
+        pizza.isTeMozzarella = true
+        pizza.isTePernil = false
+        pizza.isTeXampinyons = false
+        pizza.isTePinya = false
+        pizza.picant = "No"
+        pizza.codiDescompte = "DAM2025"
+        pizza.puntuacioClient = 4
+        pizza.notesComanda = "Sense ceba, si us plau."
+        pizza.dataComanda = "23/10/2025"
+        pizza.isPerEmportar = true
+        pizza.nivellPicant = "Cap"
+        return pizza
     }
 }
