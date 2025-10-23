@@ -61,11 +61,15 @@ class CreateEditP2Activity : AppCompatActivity() {
             insets
         }
         Log.i("examen1", "CreateEditP2Activity")
-        pizza = intent.getSerializableExtra(MainActivity.PIZZA_KEY) as Pizza
+        val receivedPizza = intent.getSerializableExtra(MainActivity.PIZZA_KEY) as Pizza
 
-        buttonEliminarP2.setOnClickListener {
-            launchDeleteConfirm()
+        if (receivedPizza == null) {
+            Log.e("examen1", "Error greu: No s'ha rebut la Pizza a la Part 2 o no és tipus Pizza.")
+            finish() // Tanquem l'activitat si no rebem la pizza
+            return   // Important sortir de l'onCreate
         }
+
+        pizza = receivedPizza
 
         initViews()
         initSpinners()
@@ -133,18 +137,12 @@ class CreateEditP2Activity : AppCompatActivity() {
 
         // Lògica del botó GUARDAR
         buttonGuardar.setOnClickListener {
-            Log.i("examen1", "CreateEditP2Activity:Guardant dades...")
-            // 1. Desar dades d'aquesta pantalla a l'objecte
             saveDataToObject()
 
-            // 2. Log final obligatori
-            Log.i("examen1", "Objecte Pizza Final: ${pizza.toString()}")
 
-            // 3. Tornar a LlegirActivity amb la pizza actualitzada
             val intent = Intent(this, LlegirActivity::class.java)
             intent.putExtra(MainActivity.PIZZA_KEY, pizza)
 
-            // 4. Important: Netegem la pila d'activitats
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
 
             startActivity(intent)
@@ -157,9 +155,7 @@ class CreateEditP2Activity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Inicia l'activitat de confirmació d'esborrat.
-     */
+
     private fun launchDeleteConfirm() {
         Log.i("examen1", "Demanant confirmació per eliminar...")
         val intent = Intent(this, DeleteConfirmActivity::class.java)
