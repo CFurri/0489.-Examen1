@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.activity.result.contract.ActivityResultContracts
 import android.app.Activity
 import android.content.Intent
+import android.view.View
 
 class CreateEditP1Activity : AppCompatActivity() {
 
@@ -85,7 +86,6 @@ class CreateEditP1Activity : AppCompatActivity() {
             // 1. Desar dades d'aquesta pantalla a l'objecte 'Pizza'
             saveDataToObject()
 
-            // 2. Navegar a la pantalla 2, passant l'objecte 'pizza' actualitzat
             val i = Intent(CreateEditP1Activity@this, CreateEditP2Activity::class.java)
             i.putExtra(MainActivity.PIZZA_KEY, pizza)
             startActivity(i)
@@ -95,6 +95,8 @@ class CreateEditP1Activity : AppCompatActivity() {
             launchDeleteConfirm()
         }
     }
+
+
 
     private fun launchDeleteConfirm() {
         Log.i("examen1", "Demanant confirmació per eliminar...")

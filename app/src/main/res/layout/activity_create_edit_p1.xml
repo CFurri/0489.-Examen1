@@ -18,6 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="409dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="#3A49B3"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -162,7 +173,10 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="goToP2"
             android:text="SEGÜENT" />
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

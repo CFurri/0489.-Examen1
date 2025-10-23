@@ -47,6 +47,8 @@ class CreateEditP2Activity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+        } else {
+            Log.i("examen1", "Eliminació cancel·lada.")
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,7 +90,7 @@ class CreateEditP2Activity : AppCompatActivity() {
 
     private fun initSpinners() {
         // Spinner Nivell Picant
-        val opcionsNivell = arrayOf("Suau", "Fort", "Infernal")
+        val opcionsNivell = arrayOf("Suau", "Fort", "Infern")
         adapterNivellPicant = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionsNivell)
         adapterNivellPicant.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerNivellPicant.adapter = adapterNivellPicant
