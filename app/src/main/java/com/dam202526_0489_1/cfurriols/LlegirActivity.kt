@@ -27,7 +27,7 @@ class LlegirActivity : AppCompatActivity() {
 
         Log.i("examen1","LlegirActivity")
 
-        pizza = intent.getSerializableExtra(MainActivity.PIZZA_KEY) as? Pizza
+        pizza = rrorintent.getSerializableExtra(MainActivity.PIZZA_KEY) as? Pizza
 
         initAndPopulateViews()
         buttonEditar = findViewById<Button>(R.id.buttonEditar)

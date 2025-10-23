@@ -7,48 +7,133 @@
     android:layout_height="match_parent"
     tools:context=".CreateEditP2Activity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonsLayoutP2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Part 2: Detalls Finals"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Picant:"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupPicant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioPicantNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No" />
+
+                <RadioButton
+                    android:id="@+id/radioPicantSi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sí" />
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/spinnerNivellPicant"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <EditText
+                android:id="@+id/editTextCodi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Codi descompte"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Puntuació (1-5):"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinnerPuntuacio"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <EditText
+                android:id="@+id/editTextNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="top"
+                android:hint="Notes de la comanda"
+                android:inputType="textMultiLine"
+                android:minLines="3" />
+
+            <EditText
+                android:id="@+id/editTextData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Data (dd/mm/aaaa)"
+                android:inputType="text" />
+
+            <CheckBox
+                android:id="@+id/checkPerEmportar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="És per emportar" />
+
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
+        android:id="@+id/buttonsLayoutP2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarStyle"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
+        <Button
+            android:id="@+id/buttonEliminarP2"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Part 2: Detalls Finals"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:text="ELIMINAR"
+            android:textColor="@android:color/holo_red_dark" />
 
-        <TextView
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/buttonGuardar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Picant:"
-            android:textSize="18sp" />
-
-        <RadioGroup ... >
-    </RadioGroup>
-
-    <Spinner ... />
-
-    <EditText ... />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Puntuació (1-5):"
-        android:textSize="18sp" />
-
-    <Spinner ... />
-
-    <EditText ... />
-
-    <EditText ... />
-
-    <CheckBox ... />
-
-</LinearLayout>
+            android:text="GUARDAR" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

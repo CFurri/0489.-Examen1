@@ -16,49 +16,40 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.activity.result.contract.ActivityResultContracts
 import android.app.Activity
+import androidx.core.view.isVisible
 
 class CreateEditP2Activity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var pizza: Pizza
 
-        private lateinit var pizza: Pizza
+    // Controls UI
+    private lateinit var radioGroupPicant: RadioGroup
+    private lateinit var radioPicantNo: RadioButton
+    private lateinit var radioPicantSi: RadioButton
+    private lateinit var spinnerNivellPicant: Spinner
+    private lateinit var editTextCodi: EditText
+    private lateinit var spinnerPuntuacio: Spinner
+    private lateinit var editTextNotes: EditText
+    private lateinit var editTextData: EditText
+    private lateinit var checkPerEmportar: CheckBox
+    private lateinit var buttonGuardar: Button
+    private lateinit var buttonEliminarP2: Button
 
-        // Controls UI
-        private lateinit var radioGroupPicant: RadioGroup
-        private lateinit var radioPicantNo: RadioButton
-        private lateinit var radioPicantSi: RadioButton
-        private lateinit var spinnerNivellPicant: Spinner
-        private lateinit var editTextCodi: EditText
-        private lateinit var spinnerPuntuacio: Spinner
-        private lateinit var editTextNotes: EditText
-        private lateinit var editTextData: EditText
-        private lateinit var checkPerEmportar: CheckBox
-        private lateinit var buttonGuardar: Button
-        private lateinit var buttonEliminarP2: Button
+    // Adapters pels Spinners
+    private lateinit var adapterNivellPicant: ArrayAdapter<String>
+    private lateinit var adapterPuntuacio: ArrayAdapter<String>
 
-        // Adapters pels Spinners
-        private lateinit var adapterNivellPicant: ArrayAdapter<String>
-        private lateinit var adapterPuntuacio: ArrayAdapter<Int>
-
-        val deleteConfirmLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            // Aquí gestionem la RESPOSTA [cite: 1482]
-            if (result.resultCode == Activity.RESULT_OK) {
-                // L'usuari ha confirmat "Sí"
-                Log.i("examen1", "Eliminació confirmada. Tornant a MainActivity.")
-
-                // Creem un intent per tornar a la pantalla principal
-                val intent = Intent(this, MainActivity::class.java)
-                // Netegem la pila per no tornar aquí [cite: 1483]
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                finish() // Tanquem l'activitat actual
-            } else {
-                // L'usuari ha premut "No" o "Enrere"
-                Log.i("examen1", "Eliminació cancel·lada.")
-            }
+    // Launcher per Eliminar (igual que a P1)
+    private val deleteConfirmLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
         }
-
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_create_edit_p2)
@@ -68,6 +59,7 @@ class CreateEditP2Activity : AppCompatActivity() {
             insets
         }
         Log.i("examen1", "CreateEditP2Activity")
+        pizza = intent.getSerializableExtra(MainActivity.PIZZA_KEY) as Pizza
 
         buttonEliminarP2.setOnClickListener {
             launchDeleteConfirm()
@@ -97,15 +89,13 @@ class CreateEditP2Activity : AppCompatActivity() {
     private fun initSpinners() {
         // Spinner Nivell Picant
         val opcionsNivell = arrayOf("Suau", "Fort", "Infernal")
-        adapterNivellPicant =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionsNivell)
+        adapterNivellPicant = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionsNivell)
         adapterNivellPicant.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerNivellPicant.adapter = adapterNivellPicant
 
         // Spinner Puntuació
-        val opcionsPuntuacio = arrayOf(1, 2, 3, 4, 5)
-        adapterPuntuacio =
-            ArrayAdapter(this, android: R. layout . simple_spinner_item, opcionsPuntuacio)
+        val opcionsPuntuacio = arrayOf("1", "2", "3", "4", "5")
+        adapterPuntuacio = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionsPuntuacio)
         adapterPuntuacio.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerPuntuacio.adapter = adapterPuntuacio
     }
@@ -115,9 +105,8 @@ class CreateEditP2Activity : AppCompatActivity() {
         when (pizza.picant) {
             "Sí" -> {
                 radioPicantSi.isChecked = true
-                spinnerNivellPicant.isVisible = true // Mostrem l'extra [cite: 1320]
+                spinnerNivellPicant.isVisible = true // Mostrem l'extra
             }
-
             else -> {
                 radioPicantNo.isChecked = true
                 spinnerNivellPicant.isVisible = false // Amaguem l'extra
@@ -128,14 +117,14 @@ class CreateEditP2Activity : AppCompatActivity() {
         spinnerNivellPicant.setSelection(adapterNivellPicant.getPosition(pizza.nivellPicant))
 
         editTextCodi.setText(pizza.codiDescompte)
-        spinnerPuntuacio.setSelection(adapterPuntuacio.getPosition(pizza.puntuacioClient))
+        spinnerPuntuacio.setSelection(adapterPuntuacio.getPosition(pizza.puntuacioClient.toString()))
         editTextNotes.setText(pizza.notesComanda)
         editTextData.setText(pizza.dataComanda)
         checkPerEmportar.isChecked = pizza.isPerEmportar
     }
 
     private fun initListeners() {
-        // Lògica de l'Extra: Mostrar/Amagar l'Spinner de nivell picant [cite: 1320]
+        // Lògica de l'Extra: Mostrar/Amagar l'Spinner de nivell picant
         radioGroupPicant.setOnCheckedChangeListener { _, checkedId ->
             spinnerNivellPicant.isVisible = (checkedId == R.id.radioPicantSi)
         }
@@ -153,15 +142,27 @@ class CreateEditP2Activity : AppCompatActivity() {
             val intent = Intent(this, LlegirActivity::class.java)
             intent.putExtra(MainActivity.PIZZA_KEY, pizza)
 
-            // 4. Important: Netegem la pila d'activitats [cite: 1353]
-            // Això fa que si premem "enrere" des de LlegirActivity,
-            // tornem a MainActivity, no a les pantalles d'edició.
+            // 4. Important: Netegem la pila d'activitats
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
 
             startActivity(intent)
             finish() // Tanquem P2
-            // Hauríem de tancar P1 també, però amb FLAG_ACTIVITY_CLEAR_TOP n'hi ha prou.
         }
+
+        // Lògica del botó Eliminar
+        buttonEliminarP2.setOnClickListener {
+            launchDeleteConfirm()
+        }
+    }
+
+    /**
+     * Inicia l'activitat de confirmació d'esborrat.
+     */
+    private fun launchDeleteConfirm() {
+        Log.i("examen1", "Demanant confirmació per eliminar...")
+        val intent = Intent(this, DeleteConfirmActivity::class.java)
+        // Llancem l'intent esperant un resultat
+        deleteConfirmLauncher.launch(intent)
     }
 
     private fun saveDataToObject() {
@@ -174,16 +175,9 @@ class CreateEditP2Activity : AppCompatActivity() {
         }
 
         pizza.codiDescompte = editTextCodi.text.toString()
-        pizza.puntuacioClient = spinnerPuntuacio.selectedItem as Int
+        pizza.puntuacioClient = (spinnerPuntuacio.selectedItem as String).toIntOrNull() ?: 0
         pizza.notesComanda = editTextNotes.text.toString()
         pizza.dataComanda = editTextData.text.toString()
         pizza.isPerEmportar = checkPerEmportar.isChecked
-    }
-
-    private fun launchDeleteConfirm() {
-        Log.i("examen1", "Demanant confirmació per eliminar...")
-        val intent = Intent(this, DeleteConfirmActivity::class.java)
-        // Llancem l'intent esperant un resultat [cite: 1482]
-        deleteConfirmLauncher.launch(intent)
     }
 }

@@ -25,23 +25,30 @@ class CreateEditP1Activity : AppCompatActivity() {
     // Declara tots els controls UI
     private lateinit var editTextNom: EditText
     private lateinit var editTextPreu: EditText
+    private lateinit var editTextUnitats: EditText
     private lateinit var radioGroupMida: RadioGroup
     private lateinit var radioMidaPetita: RadioButton
     private lateinit var radioMidaMitjana: RadioButton
     private lateinit var radioMidaFamiliar: RadioButton
     private lateinit var spinnerMassa: Spinner
+    private lateinit var checkTomaquet: CheckBox
+    private lateinit var checkMozzarella: CheckBox
+    private lateinit var checkPernil: CheckBox
+    private lateinit var checkXampinyons: CheckBox
+    private lateinit var togglePinya: ToggleButton
+    private lateinit var buttonSeguent: Button
+    private lateinit var buttonEliminarP1: Button
 
     val deleteConfirmLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        // Aquí gestionem la RESPOSTA [cite: 1482]
+        // Aquí gestionem la RESPOSTA
         if (result.resultCode == Activity.RESULT_OK) {
             // L'usuari ha confirmat "Sí"
-            Log.i("examen1", "Eliminació confirmada. Tornant a MainActivity.")
 
             // Creem un intent per tornar a la pantalla principal
             val intent = Intent(this, MainActivity::class.java)
-            // Netegem la pila per no tornar aquí [cite: 1483]
+            // Netegem la pila per no tornar aquí
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish() // Tanquem l'activitat actual
@@ -53,26 +60,6 @@ class CreateEditP1Activity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        private lateinit var pizza : Pizza
-
-        // Declara tots els controls UI
-        private lateinit var editTextNom: EditText
-        private lateinit var editTextPreu: EditText
-        private lateinit var editTextUnitats: EditText
-        private lateinit var radioGroupMida: RadioGroup
-        private lateinit var radioMidaPetita: RadioButton
-        private lateinit var radioMidaMitjana: RadioButton
-        private lateinit var radioMidaFamiliar: RadioButton
-        private lateinit var spinnerMassa: Spinner
-        private lateinit var checkTomaquet: CheckBox
-        private lateinit var checkMozzarella: CheckBox
-        private lateinit var checkPernil: CheckBox
-        private lateinit var checkXampinyons: CheckBox
-        private lateinit var togglePinya: ToggleButton
-        private lateinit var buttonSeguent: Button
-        private lateinit var buttonEliminarP1: Button
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_create_edit_p1)
@@ -84,13 +71,18 @@ class CreateEditP1Activity : AppCompatActivity() {
         Log.i("examen1","CreateEditP1Activity")
 
         //Recuperem les dades que arriben
-        pizza = intent.getSerializableExtra(MainActivity.PIZZA_KEY) as? Pizza
+        pizza = intent.getSerializableExtra(MainActivity.PIZZA_KEY) as Pizza
+
+        if (pizza == null) {
+            finish()
+            return
+        }
 
         initViews()
         populateData()
 
         buttonSeguent.setOnClickListener {
-            // 1. Desar dades d'aquesta pantalla a l'objecte 'pizza'
+            // 1. Desar dades d'aquesta pantalla a l'objecte 'Pizza'
             saveDataToObject()
 
             // 2. Navegar a la pantalla 2, passant l'objecte 'pizza' actualitzat
@@ -109,11 +101,19 @@ class CreateEditP1Activity : AppCompatActivity() {
     private fun initViews() {
         editTextNom = findViewById(R.id.editTextNom)
         editTextPreu = findViewById(R.id.editTextPreu)
+        editTextUnitats = findViewById(R.id.editTextUnitats)
         radioGroupMida = findViewById(R.id.radioGroupMida)
         radioMidaPetita = findViewById(R.id.radioMidaPetita)
         radioMidaMitjana = findViewById(R.id.radioMidaMitjana)
         radioMidaFamiliar = findViewById(R.id.radioMidaFamiliar)
         spinnerMassa = findViewById(R.id.spinnerMassa)
+        checkTomaquet = findViewById(R.id.checkTomaquet)
+        checkMozzarella = findViewById(R.id.checkMozzarella)
+        checkPernil = findViewById(R.id.checkPernil)
+        checkXampinyons = findViewById(R.id.checkXampinyons)
+        togglePinya = findViewById(R.id.togglePinya)
+        buttonSeguent = findViewById(R.id.buttonSeguent)
+        buttonEliminarP1 = findViewById(R.id.buttonEliminarP1)
     }
 
     private fun populateData() {

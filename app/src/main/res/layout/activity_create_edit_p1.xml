@@ -19,28 +19,112 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView android:text="Part 1: Dades Principals" android:textStyle="bold" android:textSize="22sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Part 1: Dades Principals"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-            <EditText android:id="@+id/editTextNom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:hint="Nom de la recepta" android:inputType="textPersonName" />
-            <EditText android:id="@+id/editTextPreu" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Preu" android:inputType="numberDecimal" />
+            <EditText
+                android:id="@+id/editTextNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Nom de la recepta"
+                android:inputType="textPersonName" />
 
-            <EditText android:id="@+id/editTextUnitats" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Unitats" android:inputType="number" />
+            <EditText
+                android:id="@+id/editTextPreu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Preu"
+                android:inputType="numberDecimal" />
 
-            <TextView style="@style/TextViewStyle" android:text="Mida:" />
-            <RadioGroup android:id="@+id/radioGroupMida" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <RadioButton android:id="@+id/radioMidaPetita" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Petita" />
-                <RadioButton android:id="@+id/radioMidaMitjana" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mitjana" />
-                <RadioButton android:id="@+id/radioMidaFamiliar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Familiar" />
+            <EditText
+                android:id="@+id/editTextUnitats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Unitats"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Mida:"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupMida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioMidaPetita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Petita" />
+
+                <RadioButton
+                    android:id="@+id/radioMidaMitjana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mitjana" />
+
+                <RadioButton
+                    android:id="@+id/radioMidaFamiliar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Familiar" />
             </RadioGroup>
 
-            <TextView style="@style/TextViewStyle" android:text="Tipus de massa:" />
-            <Spinner android:id="@+id/spinnerMassa" android:layout_width="match_parent" android:layout_height="48dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Tipus de massa:"
+                android:textSize="18sp" />
 
-            <TextView style="@style/TextViewStyle" android:text="Ingredients:" />
-            <CheckBox android:id="@+id/checkTomaquet" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tomàquet" />
-            <CheckBox android:id="@+id/checkMozzarella" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mozzarella" />
-            <CheckBox android:id="@+id/checkPernil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pernil" />
-            <CheckBox android:id="@+id/checkXampinyons" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Xampinyons" />
+            <Spinner
+                android:id="@+id/spinnerMassa"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Ingredients:"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/checkTomaquet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tomàquet" />
+
+            <CheckBox
+                android:id="@+id/checkMozzarella"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mozzarella" />
+
+            <CheckBox
+                android:id="@+id/checkPernil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pernil" />
+
+            <CheckBox
+                android:id="@+id/checkXampinyons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xampinyons" />
 
             <ToggleButton
                 android:id="@+id/togglePinya"
