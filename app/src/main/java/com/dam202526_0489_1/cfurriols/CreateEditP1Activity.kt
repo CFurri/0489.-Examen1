@@ -75,7 +75,7 @@ class CreateEditP1Activity : AppCompatActivity() {
         pizza = intent.getSerializableExtra(MainActivity.PIZZA_KEY) as Pizza
 
         if (pizza == null) {
-            finish()
+
             return
         }
 
